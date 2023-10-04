@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TaskMan>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Active Tasks</h1>
+
+<table class="table table-bordered table-striped" style="width=100%">
+    <thead>
+        <tr>
+            <th>
+                Task Number
+            </th>
+            <th>
+                Assigned User
+            </th>
+            <th>
+                Task Details
+            </th>
+            <th>
+                Due Date
+            </th>
+            <th>
+                Date Added
+            </th>
+            <th>
+                Completion Status
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @* iterating through the model we loaded using a for-each loop *@
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td width="10%">
+                    @obj.TaskNumber
+                </td>
+                <td width="30%">
+                    @obj.AssignedUser
+                </td>
+                <td width="50%">
+                    @obj.TaskDetails
+                </td>
+                <td width="30%">
+                    @obj.DueDate
+                </td>
+                <td width="30%">
+                    @obj.DateAdded
+                </td>
+                <td width="30%">
+                    @obj.CompletionStatus
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

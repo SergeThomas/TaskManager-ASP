@@ -12,6 +12,6 @@ namespace TaskManagerApp.Data
         }
 
         // create taskMan table with the name taskMans to load all columns from model
-        public DbSet<TaskMan> TaskMans { get; set; } 
+        public DbSet<TaskMan> TaskMans { get; set; }  
     }
 }
