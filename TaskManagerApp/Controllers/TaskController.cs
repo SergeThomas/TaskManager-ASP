@@ -35,10 +35,14 @@ namespace TaskManagerApp.Controllers
         [HttpPost]      // always add httpPost when posting data
         [ValidateAntiForgeryToken]      // this will prevent cross site forgery on form
         public IActionResult Create(TaskMan obj)
-        { 
-            _db.TaskMans.Add(obj);      // this will add the new form to the table 
-            _db.SaveChanges();          // this will push it to the database
-            return RedirectToAction("Index");       // redirect to the list page
+        {
+            if (ModelState.IsValid)     // validating whether model is valid
+            {
+                _db.TaskMans.Add(obj);      // this will add the new form to the table 
+                _db.SaveChanges();          // this will push it to the database
+                return RedirectToAction("Index");       // redirect to the list page
+            }
+            return View(obj);
         }
     }
 }
