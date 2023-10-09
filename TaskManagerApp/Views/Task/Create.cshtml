@@ -1,0 +1,23 @@
+﻿@model TaskMan
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Task</h2>
+            <hr />
+        </div>
+        <div class="mb-3" >
+            <label asp-for="AssignedUser">User Name</label>
+            <input asp-for="AssignedUser" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="TaskDetails"></label>
+            <input asp-for="TaskDetails" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Add Task</button>
+@*         <div class="mb-3">
+            <label asp-for="AssignedUser">User Name</label>
+            <input asp-for="AssignedUser" class="form-control" />
+        </div> *@
+    </div>
+</form>

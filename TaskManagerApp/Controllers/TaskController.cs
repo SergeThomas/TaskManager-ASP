@@ -24,5 +24,11 @@ namespace TaskManagerApp.Controllers
             IEnumerable<TaskMan> objTaskList = _db.TaskMans;
             return View(objTaskList);
         }
+
+        // Get - this will create a task, so we will be getting information from the form
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
