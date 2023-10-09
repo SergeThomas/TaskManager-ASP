@@ -15,6 +15,9 @@
             <input asp-for="TaskDetails" class="form-control" />
         </div>
         <button type="submit" class="btn btn-primary" style="width:150px">Add Task</button>
+        <a asp-controller="Task" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to List
+        </a>
 @*         <div class="mb-3">
             <label asp-for="AssignedUser">User Name</label>
             <input asp-for="AssignedUser" class="form-control" />
