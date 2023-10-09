@@ -25,10 +25,20 @@ namespace TaskManagerApp.Controllers
             return View(objTaskList);
         }
 
-        // Get - this will create a task, so we will be getting information from the form
+        // GET - this will create a task, so we will be getting information from the form
         public IActionResult Create()
         {
             return View();
+        }
+
+        // POST - the create view will pass a task object that we need to add to the table using this method 
+        [HttpPost]      // always add httpPost when posting data
+        [ValidateAntiForgeryToken]      // this will prevent cross site forgery on form
+        public IActionResult Create(TaskMan obj)
+        { 
+            _db.TaskMans.Add(obj);      // this will add the new form to the table 
+            _db.SaveChanges();          // this will push it to the database
+            return RedirectToAction("Index");       // redirect to the list page
         }
     }
 }
