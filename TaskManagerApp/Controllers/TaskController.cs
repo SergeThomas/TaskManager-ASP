@@ -50,15 +50,15 @@ namespace TaskManagerApp.Controllers
         }
 
 
-        // GET - this will get the task and display it using the ID since it is the primary key
-        public IActionResult Edit(int? id)
+        // GET - this will get the task and display it using the task number since it is the primary key
+        public IActionResult Edit(int? taskNumber)
         {
-            // return task if Id found
-            if (id==null || id == 0)
+            // return task if taskNumber found
+            if (taskNumber==null || taskNumber == 0)
             {
                 return NotFound();
             }
-            var taskFromDb = _db.TaskMans.Find(id);     // it will find the task based of it's ID and assign to the variable
+            var taskFromDb = _db.TaskMans.Find(taskNumber);     // it will find the task based of it's taskNumber and assign to the variable
 
             if (taskFromDb == null)
             {
