@@ -36,6 +36,10 @@ namespace TaskManagerApp.Controllers
         [ValidateAntiForgeryToken]      // this will prevent cross site forgery on form
         public IActionResult Create(TaskMan obj)
         {
+            if (obj.DueDate.Date.ToString() == obj.DateAdded.Date.ToString())
+            {
+                ModelState.AddModelError("DueDate", "Due date can not be the same as current date (task must be assigned 24hrs in advance)");
+            }
             if (ModelState.IsValid)     // validating whether model is valid
             {
                 _db.TaskMans.Add(obj);      // this will add the new form to the table 
