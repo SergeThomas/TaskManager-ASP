@@ -48,5 +48,43 @@ namespace TaskManagerApp.Controllers
             }
             return View(obj);
         }
+
+
+        // GET - this will get the task and display it using the ID since it is the primary key
+        public IActionResult Edit(int? id)
+        {
+            // return task if Id found
+            if (id==null || id == 0)
+            {
+                return NotFound();
+            }
+            var taskFromDb = _db.TaskMans.Find(id);     // it will find the task based of it's ID and assign to the variable
+
+            if (taskFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(taskFromDb);    // if task is found, then return to view
+        }
+
+        // POST - the create view will pass a task object that we need to add to the table using this method 
+        [HttpPost]      // always add httpPost when posting data
+        [ValidateAntiForgeryToken]      // this will prevent cross site forgery on form
+        public IActionResult Edit(TaskMan obj)
+        {
+            if (obj.DueDate.Date.ToString() == obj.DateAdded.Date.ToString())
+            {
+                ModelState.AddModelError("DueDate", "Due date can not be the same as current date (task must be assigned 24hrs in advance)");
+            }
+            if (ModelState.IsValid)     // validating whether model is valid
+            {
+                _db.TaskMans.Add(obj);      // this will add the new form to the table 
+                _db.SaveChanges();          // this will push it to the database
+                return RedirectToAction("Index");       // redirect to the list page
+            }
+            return View(obj);
+        }
+
     }
 }
