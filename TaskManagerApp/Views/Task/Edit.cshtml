@@ -1,6 +1,7 @@
 ﻿@model TaskMan
 
 <form method="post" asp-action="Edit">  @* adding explicit action *@
+    @Html.HiddenFor(model => model.TaskNumber)      @* this tag allowed files to be edited since form does not send object id *@
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary">Edit Task</h2>

@@ -59,6 +59,7 @@ namespace TaskManagerApp.Controllers
                 return NotFound();
             }
             var taskFromDb = _db.TaskMans.Find(taskNumber);     // it will find the task based of it's taskNumber and assign to the variable
+            //var taskFromDb = _db.TaskMans.FirstOrDefault(u => u.TaskNumber == taskNumber);
 
             if (taskFromDb == null)
             {
@@ -68,7 +69,7 @@ namespace TaskManagerApp.Controllers
             return View(taskFromDb);    // if task is found, then return to view
         }
 
-        // POST - the create view will pass a task object that we need to add to the table using this method 
+        // POST - the edit view will pass a task object that we need to update to the table using this method 
         [HttpPost]      // always add httpPost when posting data
         [ValidateAntiForgeryToken]      // this will prevent cross site forgery on form
         public IActionResult Edit(TaskMan obj)
@@ -77,9 +78,10 @@ namespace TaskManagerApp.Controllers
             {
                 ModelState.AddModelError("DueDate", "Due date can not be the same as current date (task must be assigned 24hrs in advance)");
             }
+
             if (ModelState.IsValid)     // validating whether model is valid
             {
-                _db.TaskMans.Add(obj);      // this will add the new form to the table 
+                _db.TaskMans.Update(obj);      // this will add the new form to the table 
                 _db.SaveChanges();          // this will push it to the database
                 return RedirectToAction("Index");       // redirect to the list page
             }
