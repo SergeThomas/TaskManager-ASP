@@ -29,11 +29,6 @@ Project is hosted on Azure at this link:
 - [@SergeThomas](https://github.com/SergeThomas)
 
 
-## Acknowledgements
-
- - [Bhrugen Patel](https://github.com/bhrugen/)
-
-
 ## Feedback
 
 If you have any feedback on how I can improve, please reach out to me at sergethomas.dev@gmail.com
