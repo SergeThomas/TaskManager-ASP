@@ -111,14 +111,18 @@ namespace TaskManagerApp.Controllers
         }
 
         // POST - this will delete the obj from the database
-        [HttpPost]      // always add httpPost when posting data
+        [HttpPost, ActionName("Delete")]   // always add httpPost when posting data
         [ValidateAntiForgeryToken]      // this will prevent cross site forgery on form
-        public IActionResult Delete(TaskMan obj)
+        public IActionResult DeletePOST(int? taskNumber)
         {
-            if (obj.DueDate.Date.ToString() == obj.DateAdded.Date.ToString())
+            // return task if taskNumber found
+            if (taskNumber == null || taskNumber == 0)
             {
-                ModelState.AddModelError("DueDate", "Due date can not be the same as current date (task must be assigned 24hrs in advance)");
+                return NotFound();
             }
+            var obj = _db.TaskMans.Find(taskNumber);     // it will find the task based of it's taskNumber and assign to the variable
+            //var taskFromDb = _db.TaskMans.FirstOrDefault(u => u.TaskNumber == taskNumber);
+
 
             if (ModelState.IsValid)     // validating whether model is valid
             {

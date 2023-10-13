@@ -7,23 +7,19 @@
             <h2 class="text-primary">Edit Task</h2>
             <hr />
         </div>
-        @* <div asp-validation-summary="All"></div> *@
         <div class="mb-3" >
             <label asp-for="AssignedUser">User Name</label>
-            <input asp-for="AssignedUser" class="form-control" />
-            <span asp-validation-for="AssignedUser" class="text-danger"></span>
+            <input asp-for="AssignedUser" disabled class="form-control" />
         </div>
         <div class="mb-3">
             <label asp-for="TaskDetails"></label>
-            <input asp-for="TaskDetails" class="form-control" />
-            <span asp-validation-for="TaskDetails" class="text-danger"></span>
+            <input asp-for="TaskDetails" disabled class="form-control" />
         </div>
         <div class="mb-3">
             <label asp-for="DueDate"></label>
-            <input asp-for="DueDate" class="form-control" type="date"/>
-            <span asp-validation-for="DueDate" class="text-danger"></span>
+            <input asp-for="DueDate" disabled class="form-control" type="date"/>
         </div>
-        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete Task</button>
         <a asp-controller="Task" asp-action="Index" class="btn btn-secondary" style="width:150px">
             Back to List
         </a>

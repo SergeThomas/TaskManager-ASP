@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TaskManagerApp.Models
 {
@@ -7,6 +8,7 @@ namespace TaskManagerApp.Models
     {
         // creating columns for model table (we will push this to database)
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TaskNumber { get; set; }
 
         [Required]
