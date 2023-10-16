@@ -23,10 +23,18 @@
             <input asp-for="DueDate" class="form-control" type="date"/>
             <span asp-validation-for="DueDate" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
-        <a asp-controller="Task" asp-action="Index" class="btn btn-secondary" style="width:150px">
-            Back to List
-        </a>
+        <div class="row pb-2">
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+                <a asp-controller="" asp-action="" class="btn btn-secondary" style="width:150px">Mark as Done</a>
+            </div class="col-6">
+            <div class="col-6 text-end">
+                <a asp-controller="Task" asp-action="Index" class="btn btn-info" style="width:150px">
+                Back to List
+                </a>
+             </div>
+        </div>
+        </div>
     </div>
 </form>
 

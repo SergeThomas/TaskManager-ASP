@@ -38,7 +38,6 @@
                 Completion Status
             </th>
             <th></th>
-            <th></th>
         </tr>
     </thead>
 
@@ -53,10 +52,10 @@
                 <td width="10%">
                     @obj.AssignedUser
                 </td>
-                <td width="40%">
+                <td width="30%">
                     @obj.TaskDetails
                 </td>
-                <td width="25%">
+                <td width="20%">
                         @obj.DueDate.ToLongDateString()
                 </td>
                 <td width="20%">
@@ -65,17 +64,13 @@
                 <td width="5%">
                     @obj.CompletionStatus
                 </td>
-                <td width="30%">
+                <td width="40%">
                     <div class="w-75 btn-group" role="group">
-                            <a asp-controller="Task" asp-action="Edit" asp-route-taskNumber="@obj.TaskNumber" class="btn btn-info mx-2">
-                                <i class="bi bi-pencil-square"></i>
+                            <a asp-controller="Task" asp-action="Edit" asp-route-taskNumber="@obj.TaskNumber" class="btn btn-info btn-sm">
+                                <i class="bi bi-pencil-square">Edit</i>
                                 </a>
-                    </div>
-                </td>
-                <td>
-                    <div class="w-75 btn-group" role="group">
-                            <a asp-controller="Task" asp-action="Delete" asp-route-taskNumber="@obj.TaskNumber" class="btn btn-danger mx-2">
-                                <i class="bi bi-file-earmark-x"></i>
+                            <a asp-controller="Task" asp-action="Delete" asp-route-taskNumber="@obj.TaskNumber" class="btn btn-danger btn-sm">
+                                <i class="bi bi-file-earmark-x">Delete</i>
                             </a>
                     </div>
                 </td>
