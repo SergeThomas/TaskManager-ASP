@@ -67,10 +67,13 @@
                 <td width="40%">
                     <div class="w-75 btn-group" role="group">
                             <a asp-controller="Task" asp-action="Edit" asp-route-taskNumber="@obj.TaskNumber" class="btn btn-info btn-sm">
-                                <i class="bi bi-pencil-square">Edit</i>
+                                <i class="bi bi-pencil-square"></i>
                                 </a>
                             <a asp-controller="Task" asp-action="Delete" asp-route-taskNumber="@obj.TaskNumber" class="btn btn-danger btn-sm">
-                                <i class="bi bi-file-earmark-x">Delete</i>
+                                <i class="bi bi-file-earmark-x"></i>
+                            </a>
+                            <a asp-controller="Task" asp-action="Complete" asp-route-taskNumber="@obj.TaskNumber" class="btn btn-info btn-sm">
+                                <i class="bi bi-patch-check"></i>
                             </a>
                     </div>
                 </td>
@@ -80,3 +83,7 @@
 
 </table>
 </div>
+
+<script>
+       function myFunction() => alert("Task has already been marked as complete")
+</script>

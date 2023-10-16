@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using TaskManagerApp.Data;
 using TaskManagerApp.Models;
 
@@ -131,6 +130,51 @@ namespace TaskManagerApp.Controllers
                 return RedirectToAction("Index");       // redirect to the list page
             }
             return View(obj);
+        }
+
+        [HttpGet, ActionName("Complete")]
+        public IActionResult MarkAsComplete(int? taskNumber)
+        {
+            // return task if taskNumber found
+            if (taskNumber == null || taskNumber == 0)
+            {
+                return NotFound();
+            }
+            var taskFromDb = _db.TaskMans.Find(taskNumber);     // it will find the task based of it's taskNumber and assign to the variable
+            //var taskFromDb = _db.TaskMans.FirstOrDefault(u => u.TaskNumber == taskNumber);
+
+            if (taskFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(taskFromDb);    // if task is found, then return to view
+        }
+
+        // POST - Marking As complete
+        [HttpPost, ActionName("Complete")]      // always add httpPost when posting data
+        [ValidateAntiForgeryToken]      // this will prevent cross site forgery on form
+        public IActionResult MarkTaskComplete(int? taskNumber)
+        {
+            if(taskNumber == null || taskNumber == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.TaskMans.Find(taskNumber);
+
+            if (obj.CompletionStatus == false)
+            {
+                if (ModelState.IsValid)     // validating whether model is valid
+                {
+                    obj.CompletionStatus = true;
+                    _db.TaskMans.Update(obj);      // method to update record based on primary key
+                    _db.SaveChanges();          // this will push it to the database
+                    return RedirectToAction("Index");       // redirect to the list page
+                }
+                
+            }
+            return PartialView("_completeValidation");
         }
 
     }
