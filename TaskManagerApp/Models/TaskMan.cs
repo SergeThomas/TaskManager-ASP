@@ -20,6 +20,8 @@ namespace TaskManagerApp.Models
 
         [DisplayName("Due Date")]
         public DateTime DueDate { get; set; }   // remember to get from user and convert to date object
+
+        [DisplayName("Date Added")]
         public DateTime DateAdded { get; set; } = DateTime.Now;
         public bool CompletionStatus { get; set; } = false;     // by default every task added is incomplete
     }

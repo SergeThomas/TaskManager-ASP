@@ -16,8 +16,8 @@
             <input asp-for="TaskDetails" disabled class="form-control" />
         </div>
         <div class="mb-3">
-            <label asp-for="DueDate"></label>
-            <input asp-for="DueDate" disabled class="form-control" type="date"/>
+            <label asp-for="DateAdded"></label>
+            <input asp-for="DateAdded" disabled class="form-control" type="date"/>
         </div>
         <div class="mb-3">
             <label asp-for="DueDate"></label>
@@ -28,16 +28,21 @@
             <input asp-for="CompletionStatus" class="form-control" type="hidden"/>
             <span asp-validation-for="CompletionStatus" class="text-danger"></span>
         </div>
-        @if (Model.CompletionStatus != true){
-            <button type="submit" class="btn btn-danger" style="width:150px">Complete</button>
+        @* Calling partial to inform user that task is complete *@
+        @if (Model.CompletionStatus == true)
+        {
+            @Html.Partial("_completeValidation");
+            <a asp-controller="Task" asp-action="Index" class="btn btn-info" style="width:150px">
+                Back to List
+            </a>
         }
         else
         {
-            <button onclick="myFunction()" type="submit" class="btn btn-danger" style="width:150px">Complete</button>
-        }
-        <a asp-controller="Task" asp-action="Index" class="btn btn-info" style="width:150px">
-            Back to List
-        </a>
+            <button type="submit" class="btn btn-danger" style="width:150px">Complete</button>
+            <a asp-controller="Task" asp-action="Index" class="btn btn-info" style="width:150px">
+                Back to List
+            </a>
+        }       
     </div>
 </form>
 

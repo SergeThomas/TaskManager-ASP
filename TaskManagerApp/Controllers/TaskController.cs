@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using TaskManagerApp.Data;
 using TaskManagerApp.Models;
 
@@ -163,19 +164,17 @@ namespace TaskManagerApp.Controllers
 
             var obj = _db.TaskMans.Find(taskNumber);
 
-            if (obj.CompletionStatus == false)
+            if (ModelState.IsValid)     // validating whether model is valid
             {
-                if (ModelState.IsValid)     // validating whether model is valid
+                if (obj.CompletionStatus == false)
                 {
                     obj.CompletionStatus = true;
                     _db.TaskMans.Update(obj);      // method to update record based on primary key
                     _db.SaveChanges();          // this will push it to the database
                     return RedirectToAction("Index");       // redirect to the list page
                 }
-                
             }
-            return PartialView("_completeValidation");
+            return View(obj);           
         }
-
     }
 }
