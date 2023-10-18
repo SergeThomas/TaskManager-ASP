@@ -3,11 +3,7 @@
     ViewData["Title"] = "Index";
 }
 
-@if (TempData["success"] != null)
-{
-    <h2>@TempData["success"]</h2>
-}
-
+<partial name="_Notification" />
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
@@ -77,7 +73,7 @@
                             <a asp-controller="Task" asp-action="Delete" asp-route-taskNumber="@obj.TaskNumber" class="btn btn-danger btn-sm">
                                 <i class="bi bi-file-earmark-x"></i>
                             </a>
-                            <a asp-controller="Task" asp-action="Complete" asp-route-taskNumber="@obj.TaskNumber" class="btn btn-info btn-sm">
+                            <a asp-controller="Task" asp-action="Complete" asp-route-taskNumber="@obj.TaskNumber" class="btn btn-success btn-sm">
                                 <i class="bi bi-patch-check"></i>
                             </a>
                     </div>
