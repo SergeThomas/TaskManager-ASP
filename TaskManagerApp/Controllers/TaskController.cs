@@ -45,6 +45,7 @@ namespace TaskManagerApp.Controllers
             {
                 _db.TaskMans.Add(obj);      // this will add the new form to the table 
                 _db.SaveChanges();          // this will push it to the database
+                TempData["success"] = "Task Created succesfully";
                 return RedirectToAction("Index");       // redirect to the list page
             }
             return View(obj);
@@ -84,6 +85,7 @@ namespace TaskManagerApp.Controllers
             {
                 _db.TaskMans.Update(obj);      // method to update record based on primary key
                 _db.SaveChanges();          // this will push it to the database
+                TempData["success"] = "Task updated succesfully";
                 return RedirectToAction("Index");       // redirect to the list page
             }
             return View(obj);
@@ -128,6 +130,7 @@ namespace TaskManagerApp.Controllers
             {
                 _db.TaskMans.Remove(obj);      // method to update record based on primary key
                 _db.SaveChanges();          // this will push it to the database
+                TempData["success"] = "Task Created succesfully";
                 return RedirectToAction("Index");       // redirect to the list page
             }
             return View(obj);
