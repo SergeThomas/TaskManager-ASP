@@ -130,7 +130,7 @@ namespace TaskManagerApp.Controllers
             {
                 _db.TaskMans.Remove(obj);      // method to update record based on primary key
                 _db.SaveChanges();          // this will push it to the database
-                TempData["success"] = "Task Created succesfully";
+                TempData["success"] = "Task deleted succesfully";
                 return RedirectToAction("Index");       // redirect to the list page
             }
             return View(obj);
