@@ -13,7 +13,7 @@ A basic CRUD Task Manager Web App. It is a ASP.NET web app built in C# and makin
 
 ## Usage
 
-Project is hosted on Azure at this link:
+Project Demo is hosted on Azure at this link:
 [coming soon]
 
 
