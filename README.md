@@ -1,5 +1,4 @@
-
-# Task Manager
+# ASP TODO App
 
 A basic CRUD Task Manager Web App. It is a ASP.NET web app built in C# and making use of EntityFrameWorkCore for SQL Database management and a simple UI built off Bootstrap using a Bootswatch Theme. 
 
